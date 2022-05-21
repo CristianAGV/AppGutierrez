@@ -8,13 +8,13 @@ import {
 import React from "react";
 import Button from "../components/Button";
 
-export default function Login(props) {
+export default function Login({ navigation }) {
   const handleSignup = () => {
-    props.handleSignup();
+    navigation.navigate("signup");
   };
 
   const handleCategories = () => {
-    props.handleCategories();
+    navigation.navigate("categories");
   };
   return (
     <View style={styles.container}>

@@ -2,9 +2,9 @@ import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Button from "../components/Button";
-export default function PreLogin(props) {
+export default function PreLogin({ navigation }) {
   const handleLogin = () => {
-    props.handleLogin();
+    navigation.navigate("login");
   };
 
   return (

@@ -8,9 +8,9 @@ import {
 } from "react-native";
 import Button from "../components/Button";
 
-export default function Signup(props) {
+export default function Signup({ navigation }) {
   const handleLogin = () => {
-    props.handleLogin();
+    navigation.navigate("login");
   };
   return (
     <View style={styles.container}>

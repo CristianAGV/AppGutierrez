@@ -2,8 +2,6 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import React from "react";
 
 export default function CategoryItem({ category }) {
-  const imagePath = category.image;
-
   return (
     <TouchableOpacity style={styles.item}>
       <Text style={styles.text}>{category.name}</Text>
