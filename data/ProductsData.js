@@ -5,6 +5,7 @@ const ProductsListData = [
     name: "Boxing Gloves",
     image:
       "https://images.unsplash.com/photo-1509255929945-586a420363cf?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Ym94aW5nJTIwZ2xvdmVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500",
+    price: 100,
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ const ProductsListData = [
     name: "Bike",
     image:
       "https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1422",
+    price: 200,
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ const ProductsListData = [
     name: "Adidas Tennis",
     image:
       "https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1059",
+    price: 70,
   },
   {
     id: 4,
@@ -26,6 +29,7 @@ const ProductsListData = [
     name: "Basketball Ball",
     image:
       "https://images.unsplash.com/photo-1579722279755-8824e38aeb31?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735",
+    price: 40,
   },
   {
     id: 5,
@@ -33,6 +37,7 @@ const ProductsListData = [
     name: "Football Ball",
     image:
       "https://images.unsplash.com/photo-1614632537190-23e4146777db?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470",
+    price: 35,
   },
   {
     id: 6,
@@ -40,6 +45,7 @@ const ProductsListData = [
     name: "Bike Helmet",
     image:
       "https://images.unsplash.com/photo-1590093105704-fddd246ab64f?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=860",
+    price: 200,
   },
   {
     id: 7,
@@ -47,6 +53,7 @@ const ProductsListData = [
     name: "Basketball Shoes",
     image:
       "https://images.unsplash.com/photo-1631984564919-1f6b2313a71c?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=846",
+    price: 56,
   },
   {
     id: 8,
@@ -54,6 +61,7 @@ const ProductsListData = [
     name: "Boxing Boots",
     image:
       "https://www.ubuy.vn/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvNzFzR3dva3lFSEwuX0FDX1VMMTQyNV8uanBn.jpg",
+    price: 85,
   },
   {
     id: 9,
@@ -61,6 +69,7 @@ const ProductsListData = [
     name: "Nike Running Shoes",
     image:
       "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025",
+    price: 120,
   },
   {
     id: 10,
@@ -68,6 +77,7 @@ const ProductsListData = [
     name: "Goalkeeper Gloves",
     image:
       "http://cdn.shopify.com/s/files/1/0556/8803/6560/products/SLYR-Hyper-PNK-Pink-Hybrid-Cut-Fingersave-Goalkeeper-Gloves-6_9af6cf78-0950-4763-9bd9-33c3e5e4e3e1.png?v=1619032804",
+    price: 28,
   },
 ];
 

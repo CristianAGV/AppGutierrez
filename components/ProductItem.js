@@ -1,9 +1,15 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import React from "react";
 
-export default function CategoryItem({ product }) {
+export default function ProductItem({ product, navigation }) {
+  const handleProductDetail = () => {
+    navigation.navigate("detail", {
+      productName: product.name,
+      productId: product.id,
+    });
+  };
   return (
-    <TouchableOpacity style={styles.item}>
+    <TouchableOpacity style={styles.item} onPress={handleProductDetail}>
       <View style={styles.categoryTextContainer}>
         <Text style={styles.text}>{product.name}</Text>
       </View>

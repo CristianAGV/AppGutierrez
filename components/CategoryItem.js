@@ -3,7 +3,7 @@ import React from "react";
 
 export default function CategoryItem({ navigation, category }) {
   const handleProductView = () => {
-    navigation.navigate("products", {
+    navigation.navigate("Products", {
       categoryName: category.name,
       categoryId: category.id,
     });

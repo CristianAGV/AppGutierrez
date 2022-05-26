@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import ProductsListData from "../data/ProductsData";
 import ProductItem from "../components/ProductItem";
 
-export default function Categories({ route }) {
+export default function Products({ route, navigation }) {
   const categoryId = route.params.categoryId;
 
   const renderProducts = ({ item }) => {
-    return <ProductItem product={item} />;
+    return <ProductItem product={item} navigation={navigation} />;
   };
   const [products, setProducts] = useState(ProductsListData);
 
