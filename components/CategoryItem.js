@@ -1,11 +1,16 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { selectCategory } from "../features/categories";
+import { setProductsByCategory } from "../features/products";
 
 export default function CategoryItem({ navigation, category }) {
+  const dispatch = useDispatch();
   const handleProductView = () => {
+    dispatch(selectCategory(category.id));
+    dispatch(setProductsByCategory(category.id));
     navigation.navigate("Products", {
       categoryName: category.name,
-      categoryId: category.id,
     });
   };
   return (

@@ -1,18 +1,9 @@
 import { StyleSheet, View, Image, Text } from "react-native";
-import React, { useEffect, useState } from "react";
-import ProductsListData from "../data/ProductsData";
+import React from "react";
 import Button from "../components/Button";
-
+import { useSelector } from "react-redux";
 export default function ProductDetail({ route }) {
-  const productId = route.params.productId;
-  const [product, setProduct] = useState({});
-
-  useEffect(() => {
-    const productFound = ProductsListData.find(
-      (product) => product.id == productId
-    );
-    setProduct(productFound);
-  }, []);
+  const product = useSelector((store) => store.products.productSelected);
 
   return (
     <View style={styles.container}>

@@ -1,11 +1,14 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import React from "react";
+import { setProductSelected } from "../features/products";
+import { useDispatch } from "react-redux";
 
 export default function ProductItem({ product, navigation }) {
+  const dispatch = useDispatch();
   const handleProductDetail = () => {
+    dispatch(setProductSelected(product.id));
     navigation.navigate("detail", {
       productName: product.name,
-      productId: product.id,
     });
   };
   return (

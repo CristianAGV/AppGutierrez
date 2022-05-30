@@ -1,27 +1,21 @@
 import { StyleSheet, Text, View, FlatList } from "react-native";
-import React, { useEffect, useState } from "react";
-import ProductsListData from "../data/ProductsData";
+import React from "react";
+
 import ProductItem from "../components/ProductItem";
 
+import { useSelector } from "react-redux";
+
 export default function Products({ route, navigation }) {
-  const categoryId = route.params.categoryId;
+  const { productsByCategory } = useSelector((store) => store.products);
 
   const renderProducts = ({ item }) => {
     return <ProductItem product={item} navigation={navigation} />;
   };
-  const [products, setProducts] = useState(ProductsListData);
-
-  useEffect(() => {
-    const filteredProducts = products.filter(
-      (product) => product.category_id === categoryId
-    );
-    setProducts(filteredProducts);
-  }, []);
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={products}
+        data={productsByCategory}
         keyExtractor={(product) => product.id}
         renderItem={renderProducts}
         style={styles.list}
