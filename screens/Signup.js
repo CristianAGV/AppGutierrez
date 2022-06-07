@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,10 +7,22 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Button from "../components/Button";
+import { useDispatch } from "react-redux";
+import { signUp } from "../features/auth";
 
 export default function Signup({ navigation }) {
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const handleLogin = () => {
     navigation.navigate("login");
+  };
+
+  const signUpUser = () => {
+    if (email !== "" && password !== "" && password === confirmPassword) {
+      dispatch(signUp({ email: email, password: password }));
+    }
   };
   return (
     <View style={styles.container}>
@@ -29,21 +41,26 @@ export default function Signup({ navigation }) {
           style={styles.input}
           placeholder="Email Address"
           placeholderTextColor={"#515259"}
+          onChangeText={(text) => setEmail(text)}
         />
-        <TextInput
-          style={styles.input}
-          placeholder="Phone Number"
-          placeholderTextColor={"#515259"}
-        />
+
         <TextInput
           style={styles.input}
           placeholder="Password"
           placeholderTextColor={"#515259"}
           secureTextEntry={true}
+          onChangeText={(text) => setPassword(text)}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Confirm Password"
+          placeholderTextColor={"#515259"}
+          secureTextEntry={true}
+          onChangeText={(text) => setConfirmPassword(text)}
         />
       </View>
 
-      <Button title="Sign Up" onPress={handleLogin} />
+      <Button title="Sign Up" onPress={signUpUser} />
       <View style={styles.questionContainer}>
         <Text style={styles.text}>Have an Account?</Text>
         <TouchableOpacity onPress={handleLogin}>

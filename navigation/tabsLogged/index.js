@@ -3,6 +3,7 @@ import { View, StyleSheet, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeNavigation from "../stacks/homeStack";
 import CartNavigation from "../stacks/cartStack";
+import LocationNavigation from "../stacks/locationStack";
 import { AntDesign } from "@expo/vector-icons";
 
 const BottomTabs = createBottomTabNavigator();
@@ -38,6 +39,18 @@ export default function LoggedTabNavigator() {
               <View style={styles.amountContainer}>
                 <Text style={styles.amountText}>0</Text>
               </View>
+            </View>
+          ),
+        }}
+      />
+
+      <BottomTabs.Screen
+        name="locationsTab"
+        component={LocationNavigation}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View style={styles.tabItem}>
+              <AntDesign name="enviromento" size={24} color="#fff" />
             </View>
           ),
         }}

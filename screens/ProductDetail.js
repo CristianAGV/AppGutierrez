@@ -1,9 +1,14 @@
 import { StyleSheet, View, Image, Text } from "react-native";
 import React from "react";
 import Button from "../components/Button";
-import { useSelector } from "react-redux";
+import { addItem } from "../features/cart";
+import { useSelector, useDispatch } from "react-redux";
 export default function ProductDetail({ route }) {
+  const dispatch = useDispatch();
   const product = useSelector((store) => store.products.productSelected);
+  const handleAddToCart = () => {
+    dispatch(addItem(product.id));
+  };
 
   return (
     <View style={styles.container}>
@@ -22,7 +27,7 @@ export default function ProductDetail({ route }) {
         <Text style={styles.text}>${product.price}</Text>
       </View>
       <View style={styles.btnContainer}>
-        <Button title="Add to Cart" />
+        <Button title="Add to Cart" onPress={handleAddToCart} />
       </View>
     </View>
   );

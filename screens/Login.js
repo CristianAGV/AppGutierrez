@@ -5,17 +5,25 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Button from "../components/Button";
+import { useDispatch } from "react-redux";
+import { signIn } from "../features/auth";
 
 export default function Login({ navigation }) {
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSignIn = () => {
+    if (email !== "" && password !== "") {
+      dispatch(signIn({ email: email, password: password }));
+    }
+  };
   const handleSignup = () => {
     navigation.navigate("signup");
   };
 
-  const handleCategories = () => {
-    navigation.navigate("categories");
-  };
   return (
     <View style={styles.container}>
       <Text style={[styles.text, styles.mainText]}>Welcome Back! </Text>
@@ -28,18 +36,20 @@ export default function Login({ navigation }) {
           style={styles.input}
           placeholder="Email"
           placeholderTextColor={"#515259"}
+          onChangeText={setEmail}
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
           placeholderTextColor={"#515259"}
           secureTextEntry={true}
+          onChangeText={setPassword}
         />
       </View>
       <TouchableOpacity>
         <Text style={styles.textLight}>Forgot password?</Text>
       </TouchableOpacity>
-      <Button title="Sign In" onPress={handleCategories} />
+      <Button title="Sign In" onPress={handleSignIn} />
       <View style={styles.questionContainer}>
         <Text style={styles.text}>Don't have an Account yet?</Text>
         <TouchableOpacity onPress={handleSignup}>

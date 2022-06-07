@@ -1,13 +1,13 @@
 import React from "react";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import PreLogin from "../../screens/PreLogin";
-import Login from "../../screens/Login";
-import Signup from "../../screens/Signup";
+import PreLogin from "../../../screens/PreLogin";
+import Login from "../../../screens/Login";
+import Signup from "../../../screens/Signup";
 
 const Stack = createNativeStackNavigator();
 
-export default function HomeNavigation() {
+export default function LoginNavigation() {
   return (
     <Stack.Navigator initialRouteName="preLogin">
       <Stack.Screen
