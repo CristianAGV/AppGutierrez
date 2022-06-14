@@ -5,7 +5,11 @@ import LocationItem from "./LocationItem";
 
 const renderLocation = ({ item }) => {
   return (
-    <LocationItem title={item.title} image={item.image} address="Santa Clara" />
+    <LocationItem
+      title={item.title}
+      image={item.image}
+      address={item.address}
+    />
   );
 };
 

@@ -6,10 +6,16 @@ import Button from "../components/Button";
 import { addLocation } from "../features/locations";
 import renamePathAndMove from "../utils/renamePath";
 
-export default function SaveLocation() {
+export default function SaveLocation({ navigation, route }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
+
+  const params = route.params;
+
+  const handleGetLocationScreen = () => {
+    navigation.navigate("get-location");
+  };
 
   const handlePickFromLibrary = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -47,9 +53,16 @@ export default function SaveLocation() {
     setImage(imageUploaded.uri);
   };
   const handleConfirm = async () => {
-    if (title !== "") {
+    if (title !== "" && image !== "" && params?.address) {
       const path = await renamePathAndMove(image);
-      dispatch(addLocation({ title, image: path, id: Date.now() }));
+      dispatch(
+        addLocation({
+          title,
+          image: path,
+          id: Date.now(),
+          address: params?.address,
+        })
+      );
       setTitle("");
       setImage("");
     }
@@ -60,6 +73,7 @@ export default function SaveLocation() {
         style={styles.input}
         placeholder="Location Title"
         placeholderTextColor={"#515259"}
+        value={title}
         onChangeText={setTitle}
       />
       {image !== "" ? (
@@ -74,6 +88,12 @@ export default function SaveLocation() {
       </View>
       <View style={styles.btnContainer}>
         <Button title="Choose from Gallery" onPress={handlePickFromLibrary} />
+      </View>
+      <View style={styles.btnContainer}>
+        <Button
+          title="Get Current Location"
+          onPress={handleGetLocationScreen}
+        />
       </View>
       <View style={styles.btnContainer}>
         <Button title="Confirm and Save" onPress={handleConfirm} />

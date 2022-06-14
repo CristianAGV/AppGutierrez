@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Locations from "../../screens/Locations";
 import SaveLocation from "../../screens/SaveLocation";
+import GetLocation from "../../screens/GetLocation";
 import { TouchableOpacity } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
@@ -42,6 +43,18 @@ export default function LocationNavigation() {
         component={SaveLocation}
         options={({ navigation }) => ({
           title: "Save Location",
+          headerStyle: {
+            backgroundColor: "#181920",
+          },
+          headerTintColor: "#555EA6",
+        })}
+      />
+
+      <Stack.Screen
+        name="get-location"
+        component={GetLocation}
+        options={({ navigation }) => ({
+          title: "Get Location",
           headerStyle: {
             backgroundColor: "#181920",
           },
