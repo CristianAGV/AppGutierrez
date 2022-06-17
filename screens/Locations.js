@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, Text, View, FlatList } from "react-native";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getLocationsDb } from "../features/locations";
+
 import LocationItem from "./LocationItem";
 
 const renderLocation = ({ item }) => {
@@ -9,12 +11,19 @@ const renderLocation = ({ item }) => {
       title={item.title}
       image={item.image}
       address={item.address}
+      id={item.id}
     />
   );
 };
 
 export default function Locations() {
+  const dispatch = useDispatch();
+
   const { locations } = useSelector((store) => store.locations);
+
+  useEffect(() => {
+    dispatch(getLocationsDb());
+  }, []);
 
   return (
     <View style={styles.container}>

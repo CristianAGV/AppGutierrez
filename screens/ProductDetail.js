@@ -8,6 +8,7 @@ export default function ProductDetail({ route }) {
   const product = useSelector((store) => store.products.productSelected);
   const handleAddToCart = () => {
     dispatch(addItem(product.id));
+    alert("Product Added to Cart!");
   };
 
   return (

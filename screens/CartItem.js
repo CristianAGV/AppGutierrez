@@ -2,22 +2,19 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import { EvilIcons } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
-import {
-  deleteLocationDb,
-  deleteLocationFromState,
-} from "../features/locations";
+import { removeItem } from "../features/cart";
 
-const LocationItem = ({ title, image, address, onRemove, id }) => {
+const CartItem = ({ name, quantity, price, image, id }) => {
   const dispatch = useDispatch();
   const handleRemove = () => {
-    dispatch(deleteLocationDb(id));
-    dispatch(deleteLocationFromState(id));
+    dispatch(removeItem(id));
   };
   return (
     <TouchableOpacity style={styles.locationContainer}>
       <View style={styles.textContainer}>
-        <Text style={styles.text}>{title}</Text>
-        <Text style={styles.secondaryText}>{address}</Text>
+        <Text style={styles.text}>{name}</Text>
+        <Text style={styles.secondaryText}>Quantiity: {quantity}</Text>
+        <Text style={styles.secondaryText}>Price: {price}$</Text>
       </View>
       <View style={styles.imgContainer}>
         <Image
@@ -33,7 +30,7 @@ const LocationItem = ({ title, image, address, onRemove, id }) => {
   );
 };
 
-export default LocationItem;
+export default CartItem;
 
 const styles = StyleSheet.create({
   locationContainer: {

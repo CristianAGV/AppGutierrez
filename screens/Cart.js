@@ -1,19 +1,52 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import { useSelector } from "react-redux";
+import { StyleSheet, Text, View, FlatList } from "react-native";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import CartItem from "./CartItem";
+import Button from "../components/Button";
+import { getTotal, emptyCart } from "../features/cart";
+
+const renderItem = ({ item }) => {
+  return (
+    <CartItem
+      name={item.name}
+      quantity={item.quantity}
+      price={item.price}
+      image={item.image}
+      id={item.id}
+    />
+  );
+};
 
 export default function Cart() {
-  const { products } = useSelector((store) => store.cart);
+  const { products, total } = useSelector((store) => store.cart);
+  const dispatch = useDispatch();
   let content;
+
+  useEffect(() => {
+    dispatch(getTotal());
+  }, [products]);
+
   if (products.length === 0) {
     content = <Text style={styles.text}>Your cart is empty</Text>;
   }
+  let totalBtnTitle = `Buy ${total}$`;
+
+  const handleBuy = () => {
+    dispatch(emptyCart());
+  };
 
   if (products.length > 0) {
     content = (
-      <Text style={styles.text}>
-        There are {products.length} items in your cart
-      </Text>
+      <View>
+        <FlatList
+          data={products}
+          renderItem={renderItem}
+          keyExtractor={(product) => product.id}
+        />
+        <View style={styles.btnContainer}>
+          <Button title={totalBtnTitle} onPress={handleBuy} />
+        </View>
+      </View>
     );
   }
   return <View style={styles.container}>{content}</View>;
@@ -29,5 +62,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     color: "#fff",
+  },
+
+  btnContainer: {
+    marginTop: 30,
+    paddingHorizontal: 60,
   },
 });

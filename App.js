@@ -7,6 +7,16 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Store from "./store";
 import { Provider } from "react-redux";
 
+import { init } from "./db";
+
+init()
+  .then(() => {
+    console.log("Db Initialized");
+  })
+  .catch((err) => {
+    console.log("Error Loading Db");
+  });
+
 export default function App() {
   const [fontsLoaded] = useFonts({
     Quicksand_400Regular,

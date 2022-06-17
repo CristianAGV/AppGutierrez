@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput, Image } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { useDispatch } from "react-redux";
 import Button from "../components/Button";
-import { addLocation } from "../features/locations";
+import { addLocation, addLocationDb } from "../features/locations";
 import renamePathAndMove from "../utils/renamePath";
 
 export default function SaveLocation({ navigation, route }) {
@@ -57,6 +57,15 @@ export default function SaveLocation({ navigation, route }) {
       const path = await renamePathAndMove(image);
       dispatch(
         addLocation({
+          title,
+          image: path,
+          id: Date.now(),
+          address: params?.address,
+        })
+      );
+
+      dispatch(
+        addLocationDb({
           title,
           image: path,
           id: Date.now(),

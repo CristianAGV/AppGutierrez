@@ -4,6 +4,7 @@ import ProductsListData from "../../data/ProductsData";
 
 const initialState = {
   products: [],
+  total: 0,
   response: {},
   loading: false,
   error: false,
@@ -56,6 +57,18 @@ export const cartSlice = createSlice({
       );
       state.products = filteredProducts;
     },
+
+    getTotal: (state, action) => {
+      let totalPrice = 0;
+      state.products.forEach((product) => {
+        totalPrice = totalPrice + product.price * product.quantity;
+      });
+
+      state.total = totalPrice;
+    },
+    emptyCart: (state, action) => {
+      state.products = [];
+    },
   },
   extraReducers: {
     [handlePurchase.pending]: (state) => {
@@ -71,6 +84,6 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addItem, removeItem } = cartSlice.actions;
+export const { addItem, removeItem, getTotal, emptyCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
