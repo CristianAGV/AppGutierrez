@@ -7,10 +7,10 @@ import {
   deleteLocationFromState,
 } from "../features/locations";
 
-const LocationItem = ({ title, image, address, onRemove, id }) => {
+const LocationItem = ({ title, image, address, id }) => {
   const dispatch = useDispatch();
   const handleRemove = () => {
-    dispatch(deleteLocationDb(id));
+    dispatch(deleteLocationDb({ id }));
     dispatch(deleteLocationFromState(id));
   };
   return (

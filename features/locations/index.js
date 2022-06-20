@@ -46,9 +46,9 @@ export const getLocationsDb = createAsyncThunk(
 
 export const deleteLocationDb = createAsyncThunk(
   "location/removeLocation",
-  async (id, asyncThunk) => {
+  async (location, asyncThunk) => {
     try {
-      const result = await deleteLocation(id);
+      const result = await deleteLocation(location.id);
 
       console.log(result);
       console.log("Record Successfully Removed.");
