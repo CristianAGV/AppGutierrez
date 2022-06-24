@@ -40,7 +40,6 @@ export default function HomeNavigation() {
         component={ProductDetail}
         options={({ route }) => ({
           title: route.params.productName,
-          headerShown: false,
 
           headerStyle: {
             backgroundColor: "#181920",

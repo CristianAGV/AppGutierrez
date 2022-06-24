@@ -27,7 +27,11 @@ export default function Cart() {
   }, [products]);
 
   if (products.length === 0) {
-    content = <Text style={styles.text}>Your cart is empty</Text>;
+    content = (
+      <View style={styles.textContainer}>
+        <Text style={styles.text}>Your cart is empty</Text>;
+      </View>
+    );
   }
   let totalBtnTitle = `Buy ${total}$`;
 
@@ -56,6 +60,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#252A34",
+  },
+  textContainer: {
+    flex: 1,
     justifyContent: "center",
   },
   text: {

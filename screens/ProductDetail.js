@@ -1,4 +1,4 @@
-import { StyleSheet, View, Image, Text } from "react-native";
+import { StyleSheet, View, Image, Text, Alert } from "react-native";
 import React from "react";
 import Button from "../components/Button";
 import { addItem } from "../features/cart";
@@ -8,7 +8,7 @@ export default function ProductDetail({ route }) {
   const product = useSelector((store) => store.products.productSelected);
   const handleAddToCart = () => {
     dispatch(addItem(product.id));
-    alert("Product Added to Cart!");
+    Alert.alert("Done", "Product Added to Cart!");
   };
 
   return (
@@ -19,16 +19,29 @@ export default function ProductDetail({ route }) {
         resizeMode="cover"
       />
 
-      <View style={styles.detailContainer}>
-        <Text style={styles.text}>Product Name:</Text>
-        <Text style={styles.text}>{product.name}</Text>
-      </View>
-      <View style={styles.detailContainer}>
-        <Text style={styles.text}>Price:</Text>
-        <Text style={styles.text}>${product.price}</Text>
-      </View>
-      <View style={styles.btnContainer}>
-        <Button title="Add to Cart" onPress={handleAddToCart} />
+      <View style={styles.detailCard}>
+        <View style={styles.detailContainer}>
+          <Text style={{ ...styles.text, ...styles.productTitle }}>
+            {product.name}
+          </Text>
+        </View>
+        <View
+          style={[
+            styles.detailContainer,
+            {
+              flexDirection: "row",
+              justifyContent: "space-between",
+              borderBottomColor: "#d3d3d3",
+              borderBottomWidth: 1,
+            },
+          ]}
+        >
+          <Text style={styles.text}>${product.price.toFixed(2)}</Text>
+          <Text style={styles.text}>x 1</Text>
+        </View>
+        <View style={styles.btnContainer}>
+          <Button title="Add to Cart" onPress={handleAddToCart} />
+        </View>
       </View>
     </View>
   );
@@ -39,24 +52,55 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     backgroundColor: "#252A34",
+    justifyContent: "center",
   },
+
   image: {
     width: "100%",
     height: 400,
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
   },
+  detailCard: {
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    bottom: 15,
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
+    backgroundColor: "#f6f6f6",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.65,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
   detailContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    marginBottom: 10,
   },
   text: {
     marginBottom: 10,
-    color: "white",
+    color: "#000",
+  },
+  productTitle: {
+    fontSize: 18,
+    fontWeight: "700",
   },
   btnContainer: {
     width: "60%",
     marginLeft: "auto",
     marginRight: "auto",
+    marginTop: 15,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+
+    elevation: 8,
   },
 });

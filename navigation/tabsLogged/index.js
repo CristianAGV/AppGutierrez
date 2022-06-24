@@ -5,10 +5,12 @@ import HomeNavigation from "../stacks/homeStack";
 import CartNavigation from "../stacks/cartStack";
 import LocationNavigation from "../stacks/locationStack";
 import { AntDesign } from "@expo/vector-icons";
+import { useSelector } from "react-redux";
 
 const BottomTabs = createBottomTabNavigator();
 
 export default function LoggedTabNavigator() {
+  const { products } = useSelector((store) => store.cart);
   return (
     <BottomTabs.Navigator
       screenOptions={{
@@ -37,7 +39,7 @@ export default function LoggedTabNavigator() {
             <View style={styles.tabItem}>
               <AntDesign name="shoppingcart" size={24} color="#fff" />
               <View style={styles.amountContainer}>
-                <Text style={styles.amountText}>0</Text>
+                <Text style={styles.amountText}>{products.length}</Text>
               </View>
             </View>
           ),
