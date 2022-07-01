@@ -23,9 +23,11 @@ export const handlePurchase = createAsyncThunk(
       });
 
       const data = await response.json();
+
+      alert(`order placed with id: ${data.name}`);
       return data;
     } catch (error) {
-      return rejectWithValue("An error has ocurred");
+      return asyncThunk.rejectWithValue("An error has ocurred");
     }
   }
 );

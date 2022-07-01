@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CartItem from "./CartItem";
 import Button from "../components/Button";
-import { getTotal, emptyCart } from "../features/cart";
+import { getTotal, emptyCart, handlePurchase } from "../features/cart";
 
 const renderItem = ({ item }) => {
   return (
@@ -29,13 +29,14 @@ export default function Cart() {
   if (products.length === 0) {
     content = (
       <View style={styles.textContainer}>
-        <Text style={styles.text}>Your cart is empty</Text>;
+        <Text style={styles.text}>Your cart is empty</Text>
       </View>
     );
   }
   let totalBtnTitle = `Buy ${total}$`;
 
   const handleBuy = () => {
+    dispatch(handlePurchase(products));
     dispatch(emptyCart());
   };
 
